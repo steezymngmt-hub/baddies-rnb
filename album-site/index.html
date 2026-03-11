@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>BADDIES & RNB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  background:#000;
+  color:#fff;
+  font-family:Helvetica, Arial, sans-serif;
+  margin:40px 20px;
+  text-align:center;
+}
+
+h1{
+  letter-spacing:4px;
+  font-weight:300;
+  margin-bottom:20px;
+  font-size:1.8em;
+}
+
+.album-cover{
+  width:100%;
+  max-width:300px;
+  margin-bottom:30px;
+  border-radius:5px;
+}
+
+.track{
+  margin:12px 0;
+  cursor:pointer;
+  opacity:0.85;
+  font-size:1.1em;
+}
+
+.track:hover{
+  opacity:1;
+}
+
+.playing{
+  color:#1DB954; /* verde stile Spotify */
+  margin-left:8px;
+  font-weight:bold;
+  font-size:0.9em;
+}
+
+/* Mobile responsiveness */
+@media (max-width:480px){
+  h1{
+    font-size:1.5em;
+  }
+  .track{
+    font-size:1.2em;
+  }
+}
+</style>
+</head>
+
+<body oncontextmenu="return false">
+
+<h1>BADDIES & RNB</h1>
+<img src="cover.jpg" class="album-cover" alt="Copertina Album">
+
+<!-- Tracklist -->
+<div class="track" id="track1-div" onclick="playPreview('track1')">TRACK 01<span class="playing" id="track1-label"></span></div>
+<div class="track" id="track2-div" onclick="playPreview('track2')">TRACK 02<span class="playing" id="track2-label"></span></div>
+<div class="track" id="track3-div" onclick="playPreview('track3')">TRACK 03<span class="playing" id="track3-label"></span></div>
+<div class="track" id="track4-div" onclick="playPreview('track4')">TRACK 04<span class="playing" id="track4-label"></span></div>
+<div class="track" id="track5-div" onclick="playPreview('track5')">TRACK 05<span class="playing" id="track5-label"></span></div>
+<div class="track" id="track6-div" onclick="playPreview('track6')">TRACK 06<span class="playing" id="track6-label"></span></div>
+<div class="track" id="track7-div" onclick="playPreview('track7')">TRACK 07<span class="playing" id="track7-label"></span></div>
+<div class="track" id="track8-div" onclick="playPreview('track8')">TRACK 08<span class="playing" id="track8-label"></span></div>
+<div class="track" id="track9-div" onclick="playPreview('track9')">TRACK 09<span class="playing" id="track9-label"></span></div>
+<div class="track" id="track10-div" onclick="playPreview('track10')">TRACK 10<span class="playing" id="track10-label"></span></div>
+<div class="track" id="track11-div" onclick="playPreview('track11')">TRACK 11<span class="playing" id="track11-label"></span></div>
+<div class="track" id="track12-div" onclick="playPreview('track12')">TRACK 12<span class="playing" id="track12-label"></span></div>
+<div class="track" id="track13-div" onclick="playPreview('track13')">TRACK 13<span class="playing" id="track13-label"></span></div>
+<div class="track" id="track14-div" onclick="playPreview('track14')">TRACK 14<span class="playing" id="track14-label"></span></div>
+<div class="track" id="track15-div" onclick="playPreview('track15')">TRACK 15<span class="playing" id="track15-label"></span></div>
+
+<!-- Audio files -->
+<audio id="track1"><source src="track1.mp3" type="audio/mpeg"></audio>
+<audio id="track2"><source src="track2.mp3" type="audio/mpeg"></audio>
+<audio id="track3"><source src="track3.mp3" type="audio/mpeg"></audio>
+<audio id="track4"><source src="track4.mp3" type="audio/mpeg"></audio>
+<audio id="track5"><source src="track5.mp3" type="audio/mpeg"></audio>
+<audio id="track6"><source src="track6.mp3" type="audio/mpeg"></audio>
+<audio id="track7"><source src="track7.mp3" type="audio/mpeg"></audio>
+<audio id="track8"><source src="track8.mp3" type="audio/mpeg"></audio>
+<audio id="track9"><source src="track9.mp3" type="audio/mpeg"></audio>
+<audio id="track10"><source src="track10.mp3" type="audio/mpeg"></audio>
+<audio id="track11"><source src="track11.mp3" type="audio/mpeg"></audio>
+<audio id="track12"><source src="track12.mp3" type="audio/mpeg"></audio>
+<audio id="track13"><source src="track13.mp3" type="audio/mpeg"></audio>
+<audio id="track14"><source src="track14.mp3" type="audio/mpeg"></audio>
+<audio id="track15"><source src="track15.mp3" type="audio/mpeg"></audio>
+
+<script>
+function playPreview(id){
+  let audio = document.getElementById(id);
+
+  // Ferma tutte le altre tracce e rimuovi PLAYING
+  document.querySelectorAll("audio").forEach(a=>{
+    a.pause(); a.currentTime=0;
+  });
+  document.querySelectorAll(".playing").forEach(label=>{
+    label.textContent="";
+  });
+
+  // Mostra scritta PLAYING
+  document.getElementById(id + "-label").textContent = "PLAYING...";
+
+  audio.play();
+
+  // Stop dopo 40 secondi
+  setTimeout(()=>{
+    audio.pause();
+    audio.currentTime=0;
+    document.getElementById(id + "-label").textContent = "";
+  },40000);
+}
+</script>
+
+</body>
+</html>
